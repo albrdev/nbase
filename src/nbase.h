@@ -1,21 +1,27 @@
 #ifndef NBASE_H_
 #define NBASE_H_
 
-#include <string.h>
-#include <math.h>
 
-#define DEFAULT_CHARMAP	"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-#define CHAR_NULL	'\0'
+#include <string.h>	/* NULL, size_t, strchr() */
+#include <stdint.h>	/* uint64_t, uint32_t */
+#include <math.h>	/* floor(), log(), pow() */
+#include <errno.h>	/* EDOM, errno */
+#include <assert.h>	/* assert() */
 
-int chrpos(const unsigned char ch, const char *const pstr);
 
-void strrvr(char *str);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-int nbase_bchlen(const unsigned char val, const int base);
 
-int nbase_atob(unsigned char ch, const int base, const char *const pmap, char *pbuf);
+uint32_t nbase_cblen(uint32_t chr, uint32_t base);
+size_t nbase_ctob(uint32_t chr, const unsigned int base, const char *const pmap, char *pres);
+size_t nbase_btoc(const char *str, const unsigned int base, const char *const map, uint32_t *pres);
 
-int nbase_btoa(char *str, const int base, const char *const pmap, unsigned char *const pbuf);
 
-#endif	/* NBASE_H_ */
+#ifdef __cplusplus
+}
+#endif
 
+
+#endif	/* #ifndef NBASE_H_ */

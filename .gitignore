@@ -1,8 +1,5 @@
-bin/nbase
-bin/nbase_stob
-bin/nbase_btos
-nbase
-nbase_stob
-nbase_btos
 obj/*.o
+
+bin/syndaflood
+bin/syndaflood_d
 

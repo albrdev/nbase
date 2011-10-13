@@ -1,81 +1,54 @@
 #include "./nbase.h"
 
 
-int chrpos(const unsigned char ch, const char *const pstr)
+uint32_t nbase_cblen(uint32_t chr, uint32_t base)
 {
-	const char *ppos = pstr;
-
-	while(*ppos != CHAR_NULL) {
-		if(ch == *ppos) {
-			return (int)(ppos - pstr);
-		}
-
-		ppos++;
-	}
-
-	return -1;
+	return (chr > 0U ? (uint32_t)floor((log((double)chr * (double)base) / log((double)base))) : 0U);
 }
 
-void strrvr(char *str)
+size_t nbase_ctob(uint32_t chr, const unsigned int base, const char *const map, char *pres)
 {
-	char *rstr;
-	char swap;
+	size_t len = 0U;
 
-	rstr = str + strlen(str) - 1;
-	while(str < rstr) {
-		swap = *str;
-		*str = *rstr;
-		*rstr = swap;
+	assert(map != NULL);
+	assert(pres != NULL);
 
-		str++;
-		rstr--;
-	}
-}
+	while(chr > 0U) {
+		*pres = map[chr % base];
 
-int nbase_bchlen(const unsigned char val, const int base)
-{
-	return floor(log(base * val) / log(base));
-}
-
-int nbase_atob(unsigned char ch, const int base, const char *const pmap, char *pbuf)
-{
-	int len = 0;
-
-	if(pmap == NULL || pbuf == NULL) {
-		return -1;
+		len++;
+		pres++;
+		chr /= base;
 	}
 
-	while(ch > 0) {
-		*(pbuf + len++) = *(pmap + (ch % base));
-		ch /= base;
-	}
-
-	*(pbuf + len) = CHAR_NULL;
-	strrvr(pbuf);
-
+	*pres = '\0';
 	return len;
 }
 
-int nbase_btoa(char *str, const int base, const char *const pmap, unsigned char *const pbuf)
+size_t nbase_btoc(const char *str, const unsigned int base, const char *const pmap, uint32_t *pres)
 {
-	int len = 0, pos;
+	size_t len = 0U;
+	uintptr_t pos = 0U;
 
-	if(str == NULL || pmap == NULL || pbuf == NULL) {
-		return -1;
-	}
+	assert(str != NULL);
+	assert(pmap != NULL);
+	assert(pres != NULL);
 
-	*pbuf = 0;
-	strrvr(str);
-	while(*str != CHAR_NULL) {
-		pos = chrpos(*str, pmap);
-		if(pos == -1) {
-			return -1;
+	errno = 0;
+
+	*pres = 0U;
+	while(*str != '\0') {
+		if((pos = (uintptr_t)strchr(pmap, *str)) == 0U) {
+			errno = EDOM;
+			break;
 		}
 
-		*pbuf += pos * pow(base, len++);
+		pos -= (uintptr_t)pmap;
+		*pres += (uint32_t)(pos * (uintptr_t)pow((double)base, (double)len));
+
+		len++;
 		str++;
 	}
 
 	return len;
 }
-
