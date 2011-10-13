@@ -1,5 +1,3 @@
-obj/*.o
-
 nbase_stob
 nbase_stob_d
 nbase_btos
@@ -9,4 +7,7 @@ bin/nbase_stob
 bin/nbase_stob_d
 bin/nbase_btos
 bin/nbase_btos_d
+
+obj/*.o
+
 
