@@ -1,5 +1,10 @@
 obj/*.o
 
+nbase_stob
+nbase_stob_d
+nbase_btos
+nbase_btos_d
+
 bin/nbase_stob
 bin/nbase_stob_d
 bin/nbase_btos
