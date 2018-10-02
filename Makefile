@@ -61,18 +61,18 @@ post_print:
 # Compilation
 cli_release: CC_FLAGS += $(RLS_FLAGS) -DAPPINFO_BINARY="\"$(BIN_RELEASE)\"" -DAPPINFO_USAGE="\"$(BIN_USAGE)\"" -DAPPINFO_NAME="\"$(NAME)\"" -DAPPINFO_VERSION="\"$(VERSION)\"" -DAPPINFO_AUTHOR="\"$(AUTHOR)\"" -DAPPINFO_LICENSE="\"$(LICENSE)\"" -DAPPINFO_WEBSITE="\"$(WEBSITE)\""
 cli_release: $(TRG_OBJECTS)
-	@$(CC) -x none $(CC_FLAGS) $(CC_LIBS) $(OBJS) ./$(DIR_OBJ)/stob_main.o -o ./$(DIR_BIN)/$(BIN_STOB_RELEASE)
+	@$(CC) -x none $(CC_FLAGS) $(OBJS) ./$(DIR_OBJ)/stob_main.o $(CC_LIBS) -o ./$(DIR_BIN)/$(BIN_STOB_RELEASE)
 	$(CMD_PRINT) "\n./$(DIR_OBJ)/*.o\t\t-> ./$(DIR_BIN)/$(BIN_STOB_RELEASE)"
 
-	@$(CC) -x none $(CC_FLAGS) $(CC_LIBS) $(OBJS) ./$(DIR_OBJ)/btos_main.o -o ./$(DIR_BIN)/$(BIN_BTOS_RELEASE)
+	@$(CC) -x none $(CC_FLAGS) $(OBJS) ./$(DIR_OBJ)/btos_main.o $(CC_LIBS) -o ./$(DIR_BIN)/$(BIN_BTOS_RELEASE)
 	$(CMD_PRINT) "\n./$(DIR_OBJ)/*.o \t\t-> ./$(DIR_BIN)/$(BIN_BTOS_RELEASE)"
 
 cli_debug: CC_FLAGS += $(DBG_FLAGS) -DAPPINFO_BINARY="\"$(BIN_RELEASE)\"" -DAPPINFO_USAGE="\"$(BIN_USAGE)\"" -DAPPINFO_NAME="\"$(NAME)\"" -DAPPINFO_VERSION="\"$(VERSION)\"" -DAPPINFO_AUTHOR="\"$(AUTHOR)\"" -DAPPINFO_LICENSE="\"$(LICENSE)\"" -DAPPINFO_WEBSITE="\"$(WEBSITE)\""
 cli_debug: $(TRG_OBJECTS)
-	@$(CC) -x none $(CC_FLAGS) $(CC_LIBS) $(OBJS) ./$(DIR_OBJ)/stob_main.o -o ./$(DIR_BIN)/$(BIN_STOB_DEBUG)
+	@$(CC) -x none $(CC_FLAGS) $(OBJS) ./$(DIR_OBJ)/stob_main.o $(CC_LIBS) -o ./$(DIR_BIN)/$(BIN_STOB_DEBUG)
 	$(CMD_PRINT) "\n./$(DIR_OBJ)/*.o\t\t-> ./$(DIR_BIN)/$(BIN_STOB_DEBUG)"
 
-	@$(CC) -x none $(CC_FLAGS) $(CC_LIBS) $(OBJS) ./$(DIR_OBJ)/btos_main.o -o ./$(DIR_BIN)/$(BIN_BTOS_DEBUG)
+	@$(CC) -x none $(CC_FLAGS) $(OBJS) ./$(DIR_OBJ)/btos_main.o $(CC_LIBS) -o ./$(DIR_BIN)/$(BIN_BTOS_DEBUG)
 	$(CMD_PRINT) "\n./$(DIR_OBJ)/*.o\t\t-> ./$(DIR_BIN)/$(BIN_BTOS_DEBUG)"
 
 # Objects
