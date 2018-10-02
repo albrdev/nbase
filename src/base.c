@@ -87,8 +87,8 @@ char *esctostr(const char *str, char *res, size_t *const plen)
 	char *resiter = res;
 
 	assert(str != NULL);
-	assert(res != NULLL);
-	assert(len != NULL);
+	assert(res != NULL);
+	assert(plen != NULL);
 
 	*plen = 0U;
 	while(*str != '\0') {
