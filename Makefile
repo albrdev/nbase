@@ -1,36 +1,36 @@
 # Macros
-CC			= gcc
-CC_FLAGS		= -pedantic -ansi -std=c99 -Wall -Wextra -Wconversion
-DBG_FLAGS		= -DNBASE_DEBUG
-RLS_FLAGS		= -DNDEBUG
-CC_LIBS			= -lm
+CC					= gcc
+CC_FLAGS			= -pedantic -ansi -std=c99 -Wall -Wextra -Wconversion
+DBG_FLAGS			= -DNBASE_DEBUG
+RLS_FLAGS			= -DNDEBUG
+CC_LIBS				= -lm
 
-DIR_SRC			= src
-DIR_OBJ			= obj
-DIR_BIN			= bin
-DIR_INSTALL		= /usr/local/bin
+DIR_SRC				= src
+DIR_OBJ				= obj
+DIR_BIN				= bin
+DIR_INSTALL			= /usr/local/bin
 
-TRG_OBJECTS		= base.o nbase.o args.o stob_main.o btos_main.o
+TRG_OBJECTS			= base.o nbase.o args.o stob_main.o btos_main.o
 
-OBJS			= ./$(DIR_OBJ)/base.o ./$(DIR_OBJ)/nbase.o ./$(DIR_OBJ)/args.o
+OBJS				= ./$(DIR_OBJ)/base.o ./$(DIR_OBJ)/nbase.o ./$(DIR_OBJ)/args.o
 
 BIN_STOB_RELEASE	= nbase_stob
 BIN_STOB_DEBUG		= nbase_stob_d
 BIN_BTOS_RELEASE	= nbase_btos
 BIN_BTOS_DEBUG		= nbase_btos_d
-BIN_USAGE		= [OPTION]... [TARGET]...
+BIN_USAGE			= [OPTION]... [TARGET]...
 
-NAME			= nBase
-VERSION			= 1.2b
-AUTHOR			= Floff
-LICENSE			= GNU GPLv3
-WEBSITE			= https://github.com/floff/nbase
+NAME				= nBase
+VERSION				= 1.2b
+AUTHOR				= albrdev
+LICENSE				= GNU GPLv3
+WEBSITE				= https://bitbucket.org/albrdev/nbase
 
-CMD_CP			= /bin/cp -f
-CMD_RM			= /bin/rm -f
-CMD_PRINT		= @echo -ne
-CMD_DATE		= @/bin/date
-CMD_UNAME		= @uname -om
+CMD_CP				= /bin/cp -f
+CMD_RM				= /bin/rm -f
+CMD_PRINT			= @printf
+CMD_DATE			= @/bin/date
+CMD_UNAME			= @uname -om
 
 # All
 all: release
