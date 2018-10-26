@@ -81,16 +81,16 @@ const struct escseq *findescseqbyvalue(const uint32_t chr)
 	return NULL;
 }
 
-char *esctostr(const char *str, char *res, size_t *const plen)
+char *esctostr(const char *str, char *res, size_t *const len)
 {
 	size_t i = 0U;
 	char *resiter = res;
 
 	assert(str != NULL);
 	assert(res != NULL);
-	assert(plen != NULL);
+	assert(len != NULL);
 
-	*plen = 0U;
+	*len = 0U;
 	while(*str != '\0') {
 		*resiter = *str;
 
@@ -112,7 +112,7 @@ char *esctostr(const char *str, char *res, size_t *const plen)
 
 		str++;
 		resiter++;
-		(*plen)++;
+		(*len)++;
 	}
 
 	*resiter = '\0';

@@ -2,9 +2,9 @@
 #define BASE_H_
 
 
-#include <stdlib.h>		/* NULL, size_t strtoul() */
+#include <stdlib.h>		/* NULL, size_t, strtoul() */
 #include <stdio.h>		/* NULL, size_t, sscanf() */
-#include <string.h>		/* NULL, size_t, strncmp() */
+#include <string.h>		/* NULL, size_t, strncmp(), strspn() */
 #include <stdint.h>		/* uint32_t */
 #include <limits.h>		/* UINT_MAX */
 #include <errno.h>		/* ERANGE, errno */
