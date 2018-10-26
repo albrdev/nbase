@@ -34,7 +34,7 @@ int strtouint(char *const str, unsigned int *const pres, const int base, char **
 char *strrev(char *str, const size_t len);
 
 const struct escseq *findescseqbyvalue(const uint32_t chr);
-char *esctostr(const char *str, char *res, size_t *const plen);
+char *esctostr(const char *str, char *res, size_t *const len);
 
 
 #ifdef __cplusplus
