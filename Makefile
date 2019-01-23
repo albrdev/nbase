@@ -1,6 +1,6 @@
 # Macros
 CC					= gcc
-CC_FLAGS			= -pedantic -ansi -std=c99 -Wall -Wextra -Wconversion
+CC_FLAGS			= -pedantic -ansi -std=c99 -Wall -Wextra -Wconversion -D__USE_MINGW_ANSI_STDIO=1
 DBG_FLAGS			= -DNBASE_DEBUG
 RLS_FLAGS			= -DNDEBUG
 CC_LIBS				= -lm

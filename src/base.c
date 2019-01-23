@@ -48,7 +48,7 @@ int strtouint(char *const str, unsigned int *const pres, const int base, char **
 	return 0;
 }
 
-char *strrev(char *str, const size_t len)
+char *strrvr(char *str, const size_t len)
 {
 	char *pstriter = str, *pstrriter = str + (len - 1U);
 

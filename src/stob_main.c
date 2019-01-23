@@ -6,7 +6,7 @@
 #include <inttypes.h>	/* PRIu64 */
 
 #include "./types.h"	/* nbase_options */
-#include "./base.h"	/* strrev() */
+#include "./base.h"	/* strrvr() */
 #include "./args.h"	/* parseargs() */
 #include "./nbase.h"	/* nbase_cblen(), nbase_ctob() */
 
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	esctostr(opts.trgstr, trgbuf, &opts.trglen);
 	for(i=0U; i<opts.trglen; i++) {
 		tmplen = nbase_ctob((unsigned char)trgbuf[i], opts.base, opts.map, tmpbuf);
-		strrev(tmpbuf, tmplen);
+		strrvr(tmpbuf, tmplen);
 		baselen += tmplen;
 
 		if(opts.flags & of_fill) {
@@ -53,14 +53,14 @@ int main(int argc, char *argv[])
 	if(opts.flags & of_verbose) {
 		printf("[stats]\n");
 
-		printf("trglen:\t\t%" PRIu64 "\n\n", (unsigned long int)opts.trglen);
+		printf("trglen:\t\t%lu\n\n", (unsigned long int)opts.trglen);
 
-		printf("baselen:\t%" PRIu64 "\n", (unsigned long int)baselen);
-		printf("filllen:\t%" PRIu64 "\n", (unsigned long int)filllen);
-		printf("total:\t\t%" PRIu64 "\n\n", (unsigned long int)(baselen + filllen));
+		printf("baselen:\t%lu\n", (unsigned long int)baselen);
+		printf("filllen:\t%lu\n", (unsigned long int)filllen);
+		printf("total:\t\t%lu\n\n", (unsigned long int)(baselen + filllen));
 
-		printf("delimlen:\t%" PRIu64 "\n", (unsigned long int)delimlen);
-		printf("total:\t\t%" PRIu64 "\n", (unsigned long int)(baselen + filllen + delimlen));
+		printf("delimlen:\t%lu\n", (unsigned long int)delimlen);
+		printf("total:\t\t%lu\n", (unsigned long int)(baselen + filllen + delimlen));
 	}
 
 	exit(EXIT_SUCCESS);

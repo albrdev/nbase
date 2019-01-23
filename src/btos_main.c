@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		delimspn = strlen(tmpbuf);
 		fillspn = strspn(tmpbuf, opts.fillchr);
 
-		strrev(tmpbuf + fillspn, delimspn - fillspn);
+		strrvr(tmpbuf + fillspn, delimspn - fillspn);
 		tmplen = nbase_btoc(tmpbuf + fillspn, opts.base, opts.map, &tmpchr);
 		if(errno == 0 && (opts.flags & of_fill && delimspn == maxfilllen)) {
 			if(isprint((int)tmpchr) != 0) {
@@ -74,14 +74,14 @@ int main(int argc, char *argv[])
 		printf("\n");
 		printf("[stats]\n");
 
-		printf("trglen:\t\t%" PRIu64 "\n\n", (unsigned long int)opts.trglen);
+		printf("trglen:\t\t%lu\n\n", (unsigned long int)opts.trglen);
 
-		printf("baselen:\t%" PRIu64 "\n", (unsigned long int)baselen);
-		printf("filllen:\t%" PRIu64 "\n", (unsigned long int)filllen);
-		printf("total:\t\t%" PRIu64 "\n\n", (unsigned long int)(baselen + filllen));
+		printf("baselen:\t%lu\n", (unsigned long int)baselen);
+		printf("filllen:\t%lu\n", (unsigned long int)filllen);
+		printf("total:\t\t%lu\n\n", (unsigned long int)(baselen + filllen));
 
-		printf("delimlen:\t%" PRIu64 "\n", (unsigned long int)delimlen);
-		printf("total:\t\t%" PRIu64 "\n", (unsigned long int)(baselen + filllen + delimlen));
+		printf("delimlen:\t%lu\n", (unsigned long int)delimlen);
+		printf("total:\t\t%lu\n", (unsigned long int)(baselen + filllen + delimlen));
 	}
 
 	exit(EXIT_SUCCESS);

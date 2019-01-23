@@ -31,7 +31,7 @@ struct escseq
 
 int strtouint(char *const str, unsigned int *const pres, const int base, char **pend);
 
-char *strrev(char *str, const size_t len);
+char *strrvr(char *str, const size_t len);
 
 const struct escseq *findescseqbyvalue(const uint32_t chr);
 char *esctostr(const char *str, char *res, size_t *const len);
