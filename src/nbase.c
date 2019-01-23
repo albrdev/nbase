@@ -44,7 +44,7 @@ size_t nbase_btoc(const char *str, const unsigned int base, const char *const pm
 		}
 
 		pos -= (uintptr_t)pmap;
-		*pres += (uint32_t)(pos * (uintptr_t)(base << len));
+		*pres += (uint32_t)(pos * (uintptr_t)pow((double)base, (double)len));
 
 		len++;
 		str++;

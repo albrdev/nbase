@@ -24,7 +24,7 @@ NAME				= nBase
 VERSION				= 1.2b
 AUTHOR				= albrdev
 LICENSE				= GNU GPLv3
-WEBSITE				= https://bitbucket.org/albrdev/nbase
+WEBSITE				= https://github.com/albrdev/nbase
 
 CMD_CP				= /bin/cp -f
 CMD_RM				= /bin/rm -f
@@ -35,11 +35,11 @@ CMD_UNAME			= @uname -om
 # All
 all: release
 
-release: ante_print cli_release post_print
-debug: ante_print cli_debug post_print
+release: pre_print cli_release post_print
+debug: pre_print cli_debug post_print
 
 # Print
-ante_print:
+pre_print:
 	$(CMD_PRINT) "[build]\n"
 
 	$(CMD_PRINT) "Compiler:\t$(CC)\n"
